@@ -1,10 +1,10 @@
-import { QueryClient } from "react-query";
+import { QueryClient } from 'react-query';
 
-import { QueryClientManager } from "./query-client-manager";
+import { QueryClientManager } from './query-client-manager';
 
 let eventCacheListener: (() => void) | undefined;
-jest.mock("react-query", () => {
-  const originalModule = jest.requireActual("react-query");
+jest.mock('react-query', () => {
+  const originalModule = jest.requireActual('react-query');
   const queryClientMock = class QueryClientMock {
     eventListener: undefined;
     getQueryCache() {
@@ -20,9 +20,9 @@ jest.mock("react-query", () => {
         getAll() {
           return [
             {
-              queryHash: "queryHash",
+              queryHash: 'queryHash',
               fetch() {
-                return "fetch";
+                return 'fetch';
               },
             },
           ];
@@ -38,25 +38,25 @@ jest.mock("react-query", () => {
   };
 });
 
-describe("QueryClientManager", () => {
+describe('QueryClientManager', () => {
   const queryClient = new QueryClient();
   const queryClientManager = new QueryClientManager({
     queryClient,
   });
 
-  it("can have queries", () => {
+  it('can have queries', () => {
     expect(1).toBe(queryClientManager.getQueries().length);
   });
 
-  it("can find a query by hash", () => {
-    expect(queryClientManager.getQueryByHash("queryHash")).toBeDefined();
+  it('can find a query by hash', () => {
+    expect(queryClientManager.getQueryByHash('queryHash')).toBeDefined();
   });
 
-  it("can fetch a query by hash", () => {
-    expect(queryClientManager.fetchQueryByHash("queryHash")).toBe("fetch");
+  it('can fetch a query by hash', () => {
+    expect(queryClientManager.fetchQueryByHash('queryHash')).toBe('fetch');
   });
 
-  it("can subscribe to query cache events", () => {
+  it('can subscribe to query cache events', () => {
     const callback = jest.fn();
     queryClientManager.subscribe(callback);
 
@@ -66,7 +66,7 @@ describe("QueryClientManager", () => {
     expect(callback).toBeCalledTimes(2);
   });
 
-  it("can unsubscribe from query cache events", () => {
+  it('can unsubscribe from query cache events', () => {
     const callback = jest.fn();
     queryClientManager.subscribe(callback);
 

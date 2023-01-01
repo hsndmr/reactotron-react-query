@@ -1,6 +1,7 @@
-import { Query, QueryClient } from "react-query";
-import { QueryClientManagerOptions } from "./query-client-manager-options.interface";
-import { QueryCacheNotifyEvent } from "./query-cache-notify-event.interface";
+import { Query, QueryClient } from 'react-query';
+
+import { QueryCacheNotifyEvent } from './query-cache-notify-event.interface';
+import { QueryClientManagerOptions } from './query-client-manager-options.interface';
 export class QueryClientManager {
   queryClient: QueryClient;
 

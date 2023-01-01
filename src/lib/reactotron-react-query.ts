@@ -1,6 +1,7 @@
-import { ReactotronCore } from "reactotron-core-client";
-import { QueryClientManager } from "./query-client-manager";
-import { broadcastReactQueryEvent } from "./reactotron-helpers";
+import { ReactotronCore } from 'reactotron-core-client';
+
+import { QueryClientManager } from './query-client-manager';
+import { broadcastReactQueryEvent } from './reactotron-helpers';
 
 function reactotronReactQuery(queryClientManager: QueryClientManager) {
   return (reactotron: ReactotronCore) => {
@@ -11,7 +12,7 @@ function reactotronReactQuery(queryClientManager: QueryClientManager) {
     return {
       onCommand: ({ type, payload }: { type: string; payload?: any }) => {
         switch (type) {
-          case "state.action.dispatch":
+          case 'state.action.dispatch':
             if (payload.action.queryHash) {
               queryClientManager.fetchQueryByHash(payload.action.queryHash);
             }

@@ -1,7 +1,7 @@
-import { broadcastReactQueryEvent } from "./reactotron-helpers";
-jest.mock("reactotron-core-client");
+import { broadcastReactQueryEvent } from './reactotron-helpers';
+jest.mock('reactotron-core-client');
 
-describe("broadcastReactQueryEvent", () => {
+describe('broadcastReactQueryEvent', () => {
   const createReactotron = () => {
     return {
       stateActionComplete: jest.fn(),
@@ -10,12 +10,12 @@ describe("broadcastReactQueryEvent", () => {
     };
   };
 
-  it("can broadcast a queryUpdated event with isFetching=true", () => {
+  it('can broadcast a queryUpdated event with isFetching=true', () => {
     const reactotron = createReactotron();
     const event = {
-      type: "queryUpdated",
+      type: 'queryUpdated',
       query: {
-        queryHash: "queryHash",
+        queryHash: 'queryHash',
         state: {
           isFetching: false,
         },
@@ -42,12 +42,12 @@ describe("broadcastReactQueryEvent", () => {
       value: event?.query,
     });
   });
-  it("can broadcast a event that is not queryUpdated", () => {
+  it('can broadcast a event that is not queryUpdated', () => {
     const reactotron = createReactotron();
     const event = {
-      type: "event",
+      type: 'event',
       query: {
-        queryHash: "queryHash",
+        queryHash: 'queryHash',
         state: {
           isFetching: true,
         },
@@ -66,5 +66,4 @@ describe("broadcastReactQueryEvent", () => {
       value: event?.query,
     });
   });
-
 });
