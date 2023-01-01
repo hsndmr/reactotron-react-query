@@ -23,7 +23,7 @@ const queryClient = new QueryClient();
 export { queryClient };
 ```
 
-Create a file reactotron.js.
+Create a file reactotron.ts
 
 ```typescript
 import Reactotron from "reactotron-react-native";
@@ -48,7 +48,7 @@ Reactotron.use(reactotronReactQuery(queryClientManager))
 ```
 
 
-Import the queryClient and reactotron in your App.js file.
+Import the queryClient and reactotron in your App.jsx file.
 
 ```jsx
 import { StyleSheet, Text, View } from "react-native";
