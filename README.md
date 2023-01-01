@@ -7,6 +7,7 @@ Is there a plugin for Reactotron that allows for similar functionality to the Re
 ## Installation
 
 ```bash
+npm i react-query
 npm i reactotron-react-native --save-dev
 npm i reactotron-react-query --save-dev
 ```
