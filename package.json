@@ -9,7 +9,7 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "build": "rimraf -rf build && tsc -p tsconfig.json",
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "eslint 'src/**/*.ts' --fix",
     "prepublish:npm": "npm run build",
