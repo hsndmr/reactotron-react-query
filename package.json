@@ -9,30 +9,16 @@
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "build": "run-p build:*",
-    "build:main": "tsc -p tsconfig.json",
-    "build:module": "tsc -p tsconfig.module.json",
-    "fix": "run-s fix:*",
-    "fix:prettier": "prettier \"src/**/*.ts\" --write",
-    "fix:lint": "eslint src --ext .ts --fix",
-    "test": "run-s build test:*",
-    "test:lint": "eslint src --ext .ts",
-    "test:prettier": "prettier \"src/**/*.ts\" --list-different",
-    "spelling": "cspell \"{README.md,.github/*.md,src/**/*.ts}\"",
-    "test:unit": "jest",
-    "test:cov": "jest --coverage",
-    "check-cli": "run-s test diff-integration-tests check-integration-tests",
-    "check-integration-tests": "run-s check-integration-test:*",
-    "diff-integration-tests": "mkdir -p diff && rm -rf diff/test && cp -r test diff/test && rm -rf diff/test/test-*/.git && cd diff && git init --quiet && git add -A && git commit --quiet --no-verify --allow-empty -m 'WIP' && echo '\\n\\nCommitted most recent integration test output in the \"diff\" directory. Review the changes with \"cd diff && git diff HEAD\" or your preferred git diff viewer.'",
-    "watch:build": "tsc -p tsconfig.json -w",
-    "watch:test": "jest --watch",
-    "doc": "run-s doc:html && open-cli build/docs/index.html",
-    "doc:html": "typedoc src/ --exclude **/*.spec.t --out build/docs",
-    "doc:json": "typedoc src/ --exclude **/*.spec.ts --json build/docs/typedoc.json",
-    "doc:publish": "gh-pages -m \"[ci skip] Updates\" -d build/docs",
-    "version": "standard-version",
-    "reset-hard": "git clean -dfx && git reset --hard && npm i",
-    "prepare-release": "run-s reset-hard test test:cov"
+    "build": "rimraf -rf dist && tsc -p tsconfig.json",
+    "format": "prettier --write \"{src,test}/**/*.ts\"",
+    "lint": "eslint 'src/**/*.ts' --fix",
+    "prepublish:npm": "npm run build",
+    "publish:npm": "npm publish --access public",
+    "prepublish:next": "npm run build",
+    "publish:next": "npm publish --access public --tag next",
+    "test": "jest",
+    "prerelease": "npm run build",
+    "release": "release-it"
   },
   "engines": {
     "node": ">=10"
@@ -42,31 +28,24 @@
     "reactotron-core-client": "^2.5.0"
   },
   "devDependencies": {
-    "@types/jest": "^29.2.2",
-    "@types/mocha": "^10.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.0.1",
-    "@typescript-eslint/parser": "^4.0.1",
-    "codecov": "^3.5.0",
-    "cspell": "^4.1.0",
-    "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^7.8.0",
-    "eslint-config-prettier": "^6.11.0",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-functional": "^3.0.2",
-    "eslint-plugin-import": "^2.22.0",
-    "gh-pages": "^3.1.0",
-    "jest": "^29.3.1",
-    "mocha": "^10.1.0",
-    "npm-run-all": "^4.1.5",
-    "open-cli": "^7.1.0",
-    "prettier": "^2.1.1",
+    "@types/jest": "29.2.5",
+    "@typescript-eslint/eslint-plugin": "5.48.0",
+    "@typescript-eslint/parser": "5.48.0",
+    "eslint": "8.31.0",
+    "eslint-config-prettier": "8.6.0",
+    "eslint-plugin-import": "2.26.0",
+    "husky": "8.0.2",
+    "jest": "29.3.1",
+    "lint-staged": "13.1.0",
+    "prettier": "2.8.1",
+    "reflect-metadata": "0.1.13",
+    "release-it": "15.6.0",
+    "rimraf": "3.0.2",
+    "ts-jest": "29.0.3",
+    "typescript": "4.7.4",
     "react-dom": "^18.2.0",
     "react-query": "^3.39.2",
-    "reactotron-core-client": "^2.5.0",
-    "standard-version": "^9.0.0",
-    "ts-jest": "^29.0.3",
-    "typedoc": "^0.23.20",
-    "typescript": "^4.0.2"
+    "reactotron-core-client": "^2.5.0"
   },
   "files": [
     "build/main",
@@ -101,5 +80,15 @@
     ],
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --write"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   }
 }
