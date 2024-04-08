@@ -15,7 +15,7 @@ describe('invalidateReactQueryCommand', () => {
 
     // Assertion
     expect(queryClientManagerMock.invalidateQueries).toHaveBeenCalledWith(
-      'exampleQueryKey'
+      'exampleQueryKey',
     );
   });
 
@@ -26,7 +26,7 @@ describe('invalidateReactQueryCommand', () => {
 
     // Assertion
     expect(queryClientManagerMock.invalidateQueries).toHaveBeenCalledWith(
-      undefined
+      undefined,
     );
   });
 });

@@ -3,7 +3,7 @@ import { ArgType, CustomCommand } from 'reactotron-core-client';
 import { QueryClientManager } from './query-client-manager';
 
 export default function invalidateReactQueryCommand(
-  queryClientManager: QueryClientManager
+  queryClientManager: QueryClientManager,
 ): CustomCommand<[{ name: 'queryKey'; type: ArgType.String }]> {
   return {
     command: 'invalidate-react-query',

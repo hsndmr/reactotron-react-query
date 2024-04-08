@@ -8,11 +8,11 @@ import { broadcastReactQueryEvent } from './reactotron-helpers';
 type ReactotronReactQuery = (queryClientManager: any) => any;
 
 function reactotronReactQuery(
-  queryClientManager: QueryClientManager
+  queryClientManager: QueryClientManager,
 ): ReactotronReactQuery {
   return (reactotron: ReactotronCore) => {
     queryClientManager.subscribe((event) =>
-      broadcastReactQueryEvent(reactotron, event)
+      broadcastReactQueryEvent(reactotron, event),
     );
 
     reactotron.onCustomCommand(invalidateReactQueryCommand(queryClientManager));
