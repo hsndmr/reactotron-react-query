@@ -41,4 +41,10 @@ export class QueryClientManager {
       this.queryCacheEvent = undefined;
     }
   }
+
+  invalidateQueries(key?: string) {
+    return this.queryClient.invalidateQueries({
+      queryKey: [key],
+    });
+  }
 }

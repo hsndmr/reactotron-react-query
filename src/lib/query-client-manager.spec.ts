@@ -74,4 +74,26 @@ describe('QueryClientManager', () => {
 
     expect(queryClientManager.queryCacheEvent).toBeUndefined();
   });
+
+  it('can invalidate queries', () => {
+    // Arrange
+    queryClient.invalidateQueries = jest.fn();
+    queryClientManager.invalidateQueries('key');
+
+    // Act & Assert
+    expect(queryClient.invalidateQueries).toBeCalledWith({
+      queryKey: ['key'],
+    });
+  });
+
+  it('can invalidate all queries', () => {
+    // Arrange
+    queryClient.invalidateQueries = jest.fn();
+    queryClientManager.invalidateQueries();
+
+    // Act & Assert
+    expect(queryClient.invalidateQueries).toBeCalledWith({
+      queryKey: [undefined],
+    });
+  });
 });

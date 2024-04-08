@@ -7,7 +7,7 @@ Is there a plugin for Reactotron that allows for similar functionality to the Re
 ## Installation
 
 ```bash
-npm i react-query
+npm i @tanstack/react-query
 npm i reactotron-react-native --save-dev
 npm i reactotron-react-query --save-dev
 ```
@@ -17,7 +17,7 @@ npm i reactotron-react-query --save-dev
 Create a file queryClient.ts
 
 ```typescript
-import { QueryClient } from "react-query";
+import { QueryClient } from '@tanstack/react-query';
 const queryClient = new QueryClient();
 
 export { queryClient };
@@ -26,16 +26,18 @@ export { queryClient };
 Create a file reactotron.ts
 
 ```typescript
-import Reactotron from "reactotron-react-native";
-import { queryClient } from "./queryClient";
+import Reactotron from 'reactotron-react-native';
 import {
   QueryClientManager,
   reactotronReactQuery,
-} from "reactotron-react-query";
+} from 'reactotron-react-query';
+import { queryClient } from './queryClient';
 
 const queryClientManager = new QueryClientManager({
+  // @ts-ignore
   queryClient,
 });
+
 Reactotron.use(reactotronReactQuery(queryClientManager))
   .configure({
     onDisconnect: () => {
@@ -44,21 +46,19 @@ Reactotron.use(reactotronReactQuery(queryClientManager))
   })
   .useReactNative()
   .connect();
-
 ```
-
 
 Import the queryClient and reactotron in your App.jsx file.
 
 ```jsx
-import { StyleSheet, Text, View } from "react-native";
-import { QueryClientProvider } from "react-query";
-import { queryClient } from "./queryClient";
+import { StyleSheet, Text, View } from 'react-native';
+import { QueryClientProvider } from 'react-query';
+import { queryClient } from './queryClient';
 
 if (__DEV__) {
-  // @ts-ignore
-  import("./reactotron");
+  require('./reactotron.ts');
 }
+
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
@@ -72,10 +72,15 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
-
 ```
+
+### How to invalidate queries
+
+If you want to invalidate a query, you can use custom commands.
+
+![Screenshot](art/invalidate-queries.png)

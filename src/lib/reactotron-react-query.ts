@@ -2,12 +2,20 @@ import { ReactotronCore } from 'reactotron-core-client';
 
 import { QueryClientManager } from './query-client-manager';
 import { broadcastReactQueryEvent } from './reactotron-helpers';
+import invalidateReactQueryCommand from './invalidate-react-query-command';
 
-function reactotronReactQuery(queryClientManager: QueryClientManager) {
+// fix types next release
+type ReactotronReactQuery = (queryClientManager: any) => any;
+
+function reactotronReactQuery(
+  queryClientManager: QueryClientManager
+): ReactotronReactQuery {
   return (reactotron: ReactotronCore) => {
     queryClientManager.subscribe((event) =>
       broadcastReactQueryEvent(reactotron, event)
     );
+
+    reactotron.onCustomCommand(invalidateReactQueryCommand(queryClientManager));
 
     return {
       onCommand: ({ type, payload }: { type: string; payload?: any }) => {
