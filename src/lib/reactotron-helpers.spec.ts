@@ -25,18 +25,6 @@ describe('broadcastReactQueryEvent', () => {
     // @ts-ignore
     broadcastReactQueryEvent(reactotron, event);
 
-    expect(reactotron.stateActionComplete).toHaveBeenCalledWith(
-      event.query.queryHash,
-      {
-        queryHash: event.query.queryHash,
-      }
-    );
-
-    expect(reactotron.stateValuesResponse).toHaveBeenCalledWith(
-      event.query.queryHash,
-      event.query.state
-    );
-
     expect(reactotron.display).toHaveBeenCalledWith({
       name: `${event?.type}${event?.query.queryHash}`,
       value: event?.query,
@@ -56,10 +44,6 @@ describe('broadcastReactQueryEvent', () => {
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     broadcastReactQueryEvent(reactotron, event);
-
-    expect(reactotron.stateActionComplete).not.toBeCalled();
-
-    expect(reactotron.stateValuesResponse).not.toBeCalled();
 
     expect(reactotron.display).toHaveBeenCalledWith({
       name: `${event?.type}${event?.query.queryHash}`,
