@@ -24,7 +24,7 @@
   },
   "peerDependencies": {
     "react-query": "^3.39.2",
-    "reactotron-core-client": "^2.5.0"
+    "reactotron-core-client": "^2.9.3"
   },
   "devDependencies": {
     "@types/jest": "29.2.5",
@@ -43,8 +43,7 @@
     "ts-jest": "29.0.3",
     "typescript": "4.7.4",
     "react-dom": "^18.2.0",
-    "react-query": "^3.39.2",
-    "reactotron-core-client": "^2.5.0"
+    "react-query": "^3.39.2"
   },
   "files": [
     "build/main",
