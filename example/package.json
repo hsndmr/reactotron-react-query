@@ -14,7 +14,7 @@
     "expo-status-bar": "~1.6.0",
     "react": "18.2.0",
     "react-native": "0.72.6",
-    "reactotron-react-query": "file:../reactotron-react-query-1.0.2.tgz",
+    "reactotron-react-query": "file:../reactotron-react-query-1.0.3.tgz",
     "reactotron-react-native": "^5.0.3"
   },
   "devDependencies": {
