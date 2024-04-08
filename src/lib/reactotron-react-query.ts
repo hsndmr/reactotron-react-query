@@ -1,8 +1,8 @@
 import { ReactotronCore } from 'reactotron-core-client';
 
+import invalidateReactQueryCommand from './invalidate-react-query-command';
 import { QueryClientManager } from './query-client-manager';
 import { broadcastReactQueryEvent } from './reactotron-helpers';
-import invalidateReactQueryCommand from './invalidate-react-query-command';
 
 // fix types next release
 type ReactotronReactQuery = (queryClientManager: any) => any;
