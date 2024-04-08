@@ -43,6 +43,6 @@
     "skipLibCheck": true
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "**/*.spec.ts"],
-  "compileOnSave": false,
+  "exclude": ["node_modules"],
+  "compileOnSave": false
 }
