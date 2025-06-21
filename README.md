@@ -2,7 +2,7 @@
 
 ![Screenshot](reactotron.png)
 
-[![npm](https://img.shields.io/npm/dw/reactotron-react-query)](https://www.npmjs.com/package/reactotron-react-query)
+[![npm](https://img.shields.io/npm/dm/reactotron-react-query)](https://www.npmjs.com/package/reactotron-react-query)
 
 Is there a plugin for Reactotron that allows for similar functionality to the React Query Devtools? Yes! This plugin helps you debug your React Query cache and queries in Reactotron.
 
