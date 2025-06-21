@@ -1,0 +1,36 @@
+{
+    "name": "reactotron-react-query",
+    "version": "2.0.0",
+    "description": "Reactotron plugin for React Query",
+    "main": "dist/src/index.js",
+    "types": "dist/types/index.d.ts",
+    "repository": "https://github.com/hsndmr/reactotron-react-query",
+    "license": "MIT",
+    "author": "demirjs",
+    "keywords": ["reactotron", "react-query", "tanstack-query"],
+    "private": false,
+    "scripts": {
+      "build": "tsc -p tsconfig.prod.json",
+      "dev": "tsc -p tsconfig.json --watch",
+      "test": "jest"
+    },
+    "engines": {
+      "node": ">=18"
+    },
+    "peerDependencies": {
+      "@tanstack/react-query": "^5.80.10",
+      "reactotron-core-client": "^2.9.7"
+    },
+    "exports": {
+      ".": {
+        "import": "./dist/src/index.js",
+        "types": "./dist/types/index.d.ts"
+      }
+    },
+    "files": [
+      "dist",
+      "CHANGELOG.md",
+      "README.md"
+    ]
+  }
+  

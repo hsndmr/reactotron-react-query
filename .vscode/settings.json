@@ -3,5 +3,9 @@
   "cSpell.enabled": true,
   "editor.formatOnSave": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "jest.jestCommandLine": "pnpm exec jest",
+  "jest.rootPath": ".",
+  "jest.enableCodeLens": true,
+  "jest.runAllTestsFirst": false
 }
