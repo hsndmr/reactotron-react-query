@@ -5,7 +5,9 @@
     "outDir": "dist",
     "declaration": true,
     "declarationDir": "dist/types",
-    "importHelpers": false
+    "importHelpers": false,
+    "target": "es5",
+    "module": "es2015"
   },
   "include": ["src"],
   "exclude": ["node_modules"]
