@@ -5,7 +5,7 @@ import { defineConfig } from "eslint/config"
 
 export default defineConfig([
   {
-    ignores: ["tsconfig.json", "**/*.spec.ts"],
+    ignores: ["tsconfig.json", "**/*.spec.ts", "packages/**/dist"],
   },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts}"],
