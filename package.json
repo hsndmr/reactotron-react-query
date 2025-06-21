@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint 'packages/**/*.ts' --fix",
+    "format": "prettier --write 'packages/**/*.ts'",
     "test": "jest",
     "dev": "pnpm --filter reactotron-react-query dev"
   },
