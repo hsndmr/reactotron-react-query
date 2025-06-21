@@ -9,7 +9,7 @@ on:
 
 jobs:
   publish:
-    name: Publish your-package-name to npm
+    name: Publish reactotron-react-query to npm
     runs-on: ubuntu-latest
 
     steps:
