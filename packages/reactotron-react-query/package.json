@@ -28,8 +28,6 @@
     },
     "files": [
       "dist",
-      "!**/*.spec.*",
-      "!**/*.json",
       "CHANGELOG.md",
       "README.md"
     ]
