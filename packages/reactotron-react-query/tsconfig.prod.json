@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "importHelpers": true
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
+}
