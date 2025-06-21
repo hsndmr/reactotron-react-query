@@ -1,7 +1,7 @@
 {
     "name": "reactotron-react-query",
     "version": "2.0.0",
-    "description": "",
+    "description": "Reactotron plugin for React Query",
     "main": "dist/src/index.js",
     "types": "dist/types/index.d.ts",
     "repository": "https://github.com/hsndmr/reactotron-react-query",
@@ -31,7 +31,6 @@
       "!**/*.spec.*",
       "!**/*.json",
       "CHANGELOG.md",
-      "LICENSE",
       "README.md"
     ]
   }
