@@ -6,7 +6,8 @@
     "types": "dist/types/index.d.ts",
     "repository": "https://github.com/hsndmr/reactotron-react-query",
     "license": "MIT",
-    "keywords": [],
+    "author": "demirjs",
+    "keywords": ["reactotron", "react-query", "tanstack-query"],
     "private": false,
     "scripts": {
       "build": "tsc -p tsconfig.prod.json",
