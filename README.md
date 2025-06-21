@@ -37,12 +37,12 @@ const queryClientManager = new QueryClientManager({
   queryClient,
 })
 
-Reactotron.use(reactotronReactQuery(queryClientManager))
-  .configure({
-    onDisconnect: () => {
-      queryClientManager.unsubscribe()
-    },
-  })
+Reactotron.configure({
+  onDisconnect: () => {
+    queryClientManager.unsubscribe()
+  },
+})
+  .use(reactotronReactQuery(queryClientManager))
   .useReactNative()
   .connect()
 ```
