@@ -28,6 +28,25 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Ensure tag is from main branch and by trusted user
+        run: |
+          TRUSTED_USER="hsndmr"
+
+          if [ "$GITHUB_ACTOR" != "$TRUSTED_USER" ]; then
+            echo "Unauthorized user: $GITHUB_ACTOR. Only $TRUSTED_USER can publish."
+            exit 1
+          fi
+
+          git fetch origin main --depth=1
+
+          BRANCH=$(git branch -r --contains ${{ github.sha }} | grep origin/main || true)
+          if [ -z "$BRANCH" ]; then
+            echo "Tag is not from main branch. Aborting publish."
+            exit 1
+          fi
+
+          echo "Tag is from main branch and user is authorized. Continuing."
+
       - name: Copy root files into package
         run: |
           cp README.md CHANGELOG.md ./packages/reactotron-react-query/
